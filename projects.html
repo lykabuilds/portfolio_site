@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | lykabuilds</title>
+  <meta name="description" content="Automations, internal tools, dashboards and personal builds by Lyka Ganotisi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav wrap">
+      <a class="logo" href="index.html">lyka<span>builds</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-label="Open menu">Menu</button>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-primary btn-small" href="about.html#contact">Let's work together</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="label eyebrow">01 / Output library</p>
+        <h1>Systems I've built.</h1>
+        <p class="lead">Turning everyday business friction into useful tools: automations, dashboards and a few personal experiments. Work projects are shown as anonymized demos.</p>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="wrap">
+        <div class="filters" role="tablist" aria-label="Filter projects">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="automation">Automation</button>
+          <button class="filter" data-filter="tools">Internal Tools</button>
+          <button class="filter" data-filter="data">Data &amp; AI</button>
+          <button class="filter" data-filter="personal">Personal Builds</button>
+        </div>
+
+        <div class="grid-3">
+          <article class="project" data-cat="data">
+            <div class="preview"><img src="assets/f1/01-season-overview.png" alt="2021 F1 dashboard season overview page"></div>
+            <div class="project-body">
+              <p class="cat">Data &amp; AI</p>
+              <h3>2021 F1 Season Dashboard</h3>
+              <p>A PostgreSQL database I designed, visualized in a three-page Power BI report with drill-through teammate comparisons and auto-written insights.</p>
+              <p class="tools">PostgreSQL / Power BI / DAX</p>
+              <a class="btn btn-primary btn-small" href="projects/f1-2021.html">View case study</a>
+            </div>
+          </article>
+
+          <article class="project" data-cat="automation">
+            <div class="preview"><span class="strip">REQUEST / APPROVAL / DRAFT</span></div>
+            <div class="project-body">
+              <p class="cat">Automation</p>
+              <h3>Legal Request Portal</h3>
+              <p>Role-based requests and approvals with automated emails and document drafting.</p>
+              <p class="tools">MS Forms / Make.com / SharePoint</p>
+              <span class="btn btn-disabled btn-small">Demo coming soon</span>
+            </div>
+          </article>
+
+          <article class="project" data-cat="tools">
+            <div class="preview"><span class="strip">REQUEST / TRACK / REPORT</span></div>
+            <div class="project-body">
+              <p class="cat">Internal Tools</p>
+              <h3>Apex Department Hub</h3>
+              <p>A central place for project requests, approvals, KPIs and file traceability.</p>
+              <p class="tools">Department hub / Approvals / KPIs</p>
+              <a class="btn btn-primary btn-small" href="https://lykabuilds.github.io/apex-meeting-hub/" target="_blank" rel="noopener">View demo</a>
+            </div>
+          </article>
+
+          <article class="project" data-cat="data">
+            <div class="preview"><span class="strip">DATA / ANALYSIS / INSIGHT</span></div>
+            <div class="project-body">
+              <p class="cat">Data &amp; AI</p>
+              <h3>Financial Dashboard Sample</h3>
+              <p>Anonymized financial dashboards with AI-assisted weekly analysis.</p>
+              <p class="tools">Jet Reports / AI analysis</p>
+              <span class="btn btn-disabled btn-small">Demo coming soon</span>
+            </div>
+          </article>
+
+          <article class="project" data-cat="personal">
+            <div class="preview"><span class="strip">QUIZ / LEVELS / STREAKS</span></div>
+            <div class="project-body">
+              <p class="cat">Personal Builds</p>
+              <h3>Mr. Sensei</h3>
+              <p>Three study sources combined into one gamified Japanese quiz app.</p>
+              <p class="tools">Quiz app / Gamification</p>
+              <a class="btn btn-primary btn-small" href="https://lykabuilds.github.io/mr_sensei/" target="_blank" rel="noopener">View demo</a>
+            </div>
+          </article>
+
+          <article class="project" data-cat="personal">
+            <div class="preview"><span class="strip">MEALS / PROTEIN / GYM</span></div>
+            <div class="project-body">
+              <p class="cat">Personal Builds</p>
+              <h3>Ms. Meal</h3>
+              <p>A planner for meals, protein, water and gym sessions, with an AI assistant.</p>
+              <p class="tools">Planning app / AI assistant</p>
+              <span class="btn btn-disabled btn-small">Demo coming soon</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <span>lykabuilds / Manila, PH · © <span id="year"></span></span>
+      <span><a href="mailto:lganotisi38@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/lykaganotisi/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/lykabuilds">GitHub</a></span>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2021 F1 Season Dashboard | lykabuilds</title>
+  <meta name="description" content="Case study: a PostgreSQL database and Power BI report on the 2021 Formula 1 season.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav wrap">
+      <a class="logo" href="../index.html">lyka<span>builds</span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-label="Open menu">Menu</button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../projects.html" aria-current="page">Projects</a>
+        <a href="../about.html">About</a>
+        <a class="btn btn-primary btn-small" href="../about.html#contact">Let's work together</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap case-hero">
+      <a class="back" href="../projects.html">← All projects</a>
+      <p class="label" style="margin-top:24px">Case study · Data &amp; AI</p>
+      <h1 style="margin-top:12px">2021 F1 Season Performance Dashboard</h1>
+      <p class="lead" style="margin-top:18px">What drove the 2021 season: the driver or the car? A PostgreSQL database I designed, and a three-page Power BI report that answers it.</p>
+      <div class="meta">
+        <span class="chip">PostgreSQL</span><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Data modeling</span>
+      </div>
+      <div class="btn-row" style="margin-top:24px">
+        <a class="btn btn-primary" href="https://github.com/lykabuilds" target="_blank" rel="noopener">View on GitHub</a>
+        <a class="btn btn-ghost" href="#" aria-disabled="true">Watch walkthrough</a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <figure class="shot" style="margin:0">
+        <img src="../assets/f1/01-season-overview.png" alt="Season overview page showing Charles Leclerc's 2021 season">
+        <figcaption><strong>Season Overview.</strong> Pick any driver; the insight box rewrites itself, comparing them with their teammate, their own form, and the field.</figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap case-section">
+      <h2>Key findings</h2>
+      <div class="stats">
+        <div class="stat"><b>8 pts</b><span>Verstappen's title margin over Hamilton</span></div>
+        <div class="stat"><b>44%</b><span>of retirements were collisions or incidents</span></div>
+        <div class="stat"><b>12%</b><span>of race starts ended in a DNF</span></div>
+        <div class="stat"><b>3×</b><span>Ferrari &amp; McLaren's reliability vs. the field average</span></div>
+      </div>
+    </div>
+
+    <div class="wrap case-section">
+      <h2>Teammate head-to-head</h2>
+      <p class="prose">Teammates share a car, so the gap between them is the closest thing to a pure measure of driver skill. Right-click any driver on the first page to drill through to this comparison.</p>
+      <figure class="shot" style="margin:20px 0 0">
+        <img src="../assets/f1/02-teammate-h2h.png" alt="Teammate head-to-head page comparing Carlos Sainz and Charles Leclerc">
+        <figcaption><strong>Sainz vs. Leclerc.</strong> Sainz edged the points by 5.5, while Leclerc won qualifying 13–9. Candles show each driver's start-to-finish movement per race.</figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap case-section">
+      <h2>Car, circuit &amp; reliability</h2>
+      <figure class="shot" style="margin:0">
+        <img src="../assets/f1/03-reliability.png" alt="Reliability page with retirement causes, power unit rates and a car balance heatmap">
+        <figcaption><strong>Reliability.</strong> Retirements grouped into causes and split into car failures vs. incidents, by team, driver and power unit.</figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap case-section">
+      <h2>How it's built</h2>
+      <ul class="prose">
+        <li><strong>Database:</strong> a re-runnable PostgreSQL script with master tables (stable driver, team and circuit IDs) and season tables.</li>
+        <li><strong>Points in SQL:</strong> a results view calculates points, including the fastest-lap rule and the half-points rule for shortened races.</li>
+        <li><strong>Power BI model:</strong> a star schema around the results view, with measures kept simple through 0/1 flags.</li>
+        <li><strong>DAX:</strong> drill-through, colour slots that stay consistent per teammate, native candlestick charts, and insight text generated from measures.</li>
+      </ul>
+    </div>
+
+    <div class="wrap case-section">
+      <h2>Challenges I solved</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Problem</th><th>Cause</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>Driver A and B swapped from race to race</td><td>The "higher scorer" was ranked inside each race</td><td>Ranked teammates on full-season points with REMOVEFILTERS</td></tr>
+            <tr><td>Every retirement cause showed 100%</td><td>A CALCULATE filter replaced the chart's own filter</td><td>Wrapped the condition in KEEPFILTERS</td></tr>
+            <tr><td>Retirements counted as podiums</td><td>A blank finish position was treated as 0</td><td>Required a finish position of at least 1</td></tr>
+            <tr><td>Team stats blank for some teams</td><td>Team keys differed between tables</td><td>Looked up the team key directly from the results view</td></tr>
+            <tr><td>Pit-lane starts drawn as "P0"</td><td>Pit-lane starts are stored as grid 0</td><td>Treated pit-lane starts as P20</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="wrap case-section">
+      <div class="cta">
+        <p class="label">Next</p>
+        <h2>Need a dashboard your team will actually use?</h2>
+        <p>I build reports that answer a real question, not just show numbers.</p>
+        <a class="btn btn-primary" href="../about.html#contact">Let's work together</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <span>lykabuilds / Manila, PH · © <span id="year"></span></span>
+      <span><a href="mailto:lganotisi38@gmail.com">Email</a> · <a href="https://www.linkedin.com/in/lykaganotisi/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/lykabuilds">GitHub</a></span>
+    </div>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
